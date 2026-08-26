@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model SiteSettings {
+  id              String   @id @default("settings")
+  whatsappNumber  String   @default("5583999999999")
+  whatsappMessage String   @default("Olá, vim pelo site da WOLF DEV e gostaria de solicitar um orçamento.")
+  email           String   @default("contato@wolfdev.com.br")
+  github          String   @default("https://github.com")
+  linkedin        String   @default("https://linkedin.com")
+  facebook        String   @default("")
+  instagram       String   @default("")
+  tiktok          String   @default("")
+  kwai            String   @default("")
+  updatedAt       DateTime @updatedAt
+}
+
+model AdminUser {
+  id       String @id @default(cuid())
+  email    String @unique
+  password String
+}
